@@ -18,20 +18,20 @@ global path_name
 path_name = None
 
 # 시작 페이지 ui
-opening_ = 'opening.ui'
+opening_ = './UI/opening.ui'
 form_1, base_1 = uic.loadUiType(opening_)
 # 파일 업로드 페이지 ui
-file_upload_ = 'fileupload.ui'
+file_upload_ = './UI/fileupload.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 # 필기 조작 페이지 ui
-note_ = 'takingnote2.ui'
+note_ = './UI/takingnote.ui'
 form_3, base_3 = uic.loadUiType(note_)
 # 필기 종료 후 파일을 저장할 것인지 물어보는 페이지 ui
-askingsave_ = 'askingsave.ui'
+askingsave_ = './UI/askingsave.ui'
 form_4, base_4 = uic.loadUiType(askingsave_)
 
 
-# 사용자가 파일 업로드 페이지에서 선택한 pdf 파일을 png 파일로 변환시킴
+# 사용자가 파일 업로드 페이지에서 선택한 pdf 파일을 png 파일로 변환
 class convert_file():
     def __init__(self):
         super().__init__()
@@ -83,9 +83,6 @@ class opening_page(base_1, form_1):
         self.close()
 
 
-
-
-
 # 두 번째 페이지
 class upload_page(base_2, form_2):
     def __init__(self):
@@ -103,9 +100,6 @@ class upload_page(base_2, form_2):
         self.close()
         cv = convert_file()
         cv.pdf_to_png()
-
-
-
 
 
 # 세 번째 페이지
@@ -221,8 +215,6 @@ class note_page(base_3, form_3):
             elif key == ord('v'):  # v 누르면 필기 시작 / 필기 중지
                 isDraw = not isDraw
 
-
-
             self.pushButton_4.clicked.connect(self.checking)
             self.pushButton_2.clicked.connect(self.checking2)
             self.pushButton_3.clicked.connect(self.checking3)
@@ -250,7 +242,6 @@ class note_page(base_3, form_3):
                 print(file)
 
 
-
             # [prev] 버튼 누르면
             if check2 == True:
                 # 터틀 화면 저장
@@ -271,7 +262,6 @@ class note_page(base_3, form_3):
                     win.update()
                 check2 = False
                 print(file)
-
 
 
             # [home] 버튼 누르면
@@ -296,7 +286,6 @@ class note_page(base_3, form_3):
                 print(file)
 
 
-
             # [end] 버튼 누르면
             if check4 == True:
                 # 터틀 화면 저장
@@ -317,7 +306,6 @@ class note_page(base_3, form_3):
                     win.update()
                 check4 = False
                 print(file)
-
 
 
     # 버튼을 누르면 True로 바꾸어 if문을 수행하도록 함
@@ -353,8 +341,6 @@ class note_page(base_3, form_3):
             self.main = askingsave_page()
             self.main.show()
             self.close()
-
-
 
 
 class askingsave_page(base_4, form_4):
